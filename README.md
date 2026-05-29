@@ -46,6 +46,8 @@ This reduces **120 O(N²) calls to 1 O(N) call** per entity per frame.
 
 Measured on Minecraft 1.20.1 with SlashBlade Resharped 1.9.65, single SlashBlade entity in view.
 
+![FPS comparison: ~100 FPS before, ~250 FPS after](docs/images/performance.png)
+
 ## Installation
 
 ### Requirements
