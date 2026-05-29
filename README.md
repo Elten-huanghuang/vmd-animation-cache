@@ -17,7 +17,7 @@
 
 When using [SlashBlade Resharped](https://www.curseforge.com/minecraft/mc-mods/slashblade-resharped), MMD-based blade animations are rendered by computing the full MMD motion pipeline — VMD parsing, bone motion interpolation, and skinning matrix transformation — for every bone, every time a transform is queried.
 
-**VMD Animation Cache** eliminates this redundant computation by caching the result per frame, giving a **2.5× FPS improvement** in third-person view when SlashBlade entities are visible.
+**VMD Animation Cache** eliminates this redundant computation by caching the result per frame, giving a **3.8× FPS improvement** in third-person view when SlashBlade entities are visible.
 
 ## The Problem
 
@@ -42,11 +42,11 @@ This reduces **120 O(N²) calls to 1 O(N) call** per entity per frame.
 
 | Scenario | Before | After |
 |----------|--------|-------|
-| Third-person FPS (SlashBlade visible) | ~100 | ~250 |
+| Third-person FPS (SlashBlade visible) | ~50 | ~190 |
 
 Measured on Minecraft 1.20.1 with SlashBlade Resharped 1.9.65, single SlashBlade entity in view.
 
-![FPS comparison: ~100 FPS before, ~250 FPS after](docs/images/performance.png)
+![FPS comparison: ~50 FPS before, ~190 FPS after](docs/images/performance.png)
 
 ## Installation
 
