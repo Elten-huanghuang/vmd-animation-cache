@@ -1,0 +1,27 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+
+[[mods]]
+modId = "vmdcache"
+version = "1.0.0"
+displayName = "VMD Animation Cache"
+authors = "huanghuang"
+logoFile = "assets/vmdcache/textures/logo.png"
+description = """
+Per-frame cache for SlashBlade VmdAnimation MMD computation.
+Eliminates redundant per-bone MMD motion recomputation,
+dramatically improving third-person FPS with SlashBlade.
+"""
+[[dependencies.vmdcache]]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[47,)"
+    ordering = "NONE"
+    side = "BOTH"
+[[dependencies.vmdcache]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.20.1]"
+    ordering = "NONE"
+    side = "BOTH"

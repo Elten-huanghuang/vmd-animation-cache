@@ -1,0 +1,55 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '0.7.+'
+}
+
+version = '1.0.0'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+mixin {
+    add sourceSets.main, "vmdcache.refmap.json"
+    config "vmdcache.mixins.json"
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:1.20.1-47.3.22"
+    compileOnly files('libs/SlashBladeResharped-1.20.1-1.9.65.jar')
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs += ['-proc:none']
+}
+
+processResources {
+    def props = [version: '1.0.0']
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('META-INF/mods.toml') {
+        expand props
+    }
+}
+
+jar {
+    archiveBaseName = 'vmdcache'
+    archiveVersion = version
+    manifest {
+        attributes([
+            "Specification-Title"     : "vmdcache",
+            "Specification-Vendor"    : "huanghuang",
+            "Specification-Version"   : "1",
+            "Implementation-Title"    : "vmdcache",
+            "Implementation-Version"  : "1.0.0",
+            "Implementation-Vendor"   : "huanghuang",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs"            : "vmdcache.mixins.json"
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')

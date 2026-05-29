@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.team.venom.vmdcache.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "slashblade.VmdAnimationCacheMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  }
+}
